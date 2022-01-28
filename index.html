@@ -5,13 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <title>Library</title>
 </head>
 <body>
     <div id="header">Library</div>
-    <div class="container">
-
+    <div id="params">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required>
+        <button id="submit">Submit</button>
     </div>
+    <div id="container">
+        <div class="card">
+            <div class="title">Title:</div>
+            <div class="title">Harry Potter</div>
+            <div class="author">Author:</div>
+            <div class="author">J.K. Rowling</div>
+            <div class="toggles">
+                <button class="read">READ</button>
+                <button><i class="fa fa-trash-o trash"></i></button>
+            </div>
+            
+        </div>
+    </div>
+
     <div id="footer">The Odin Project @kyleetaan</div>
 </body>
 </html>

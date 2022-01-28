@@ -1,12 +1,20 @@
-let myLibrary = [];
+let myLibrary = [
+    {
+        title: "Harry Potter",
+        author: "J.K. Rowling",
+        read: true,
+    }
+];
 
-function Book(title, author, pages, read) {
+const container = document.getElementById("container");
+
+
+function Book(title, author, read) {
     this.title = title;
     this.author = author;
-    this.pages = pages;
     this.read = read;
 }
 
 function addBookToLibrary(){
-    
+
 }

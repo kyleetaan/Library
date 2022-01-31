@@ -1,3 +1,13 @@
+const container = document.getElementById("container");
+
+const form = document.getElementById("params");
+form.addEventListener('submit', addBookToLibrary);
+
+const titleInput = document.getElementById("title");
+const authorInput = document.getElementById("author");
+const pagesInput = document.getElementById("pages");
+const readInput = document.getElementById("read");
+
 let myLibrary = [
     {
         title: "Harry Potter",
@@ -6,33 +16,19 @@ let myLibrary = [
     }
 ];
 
-
-
-const kyle = {
-    title: "kyle amazings stories",
-    author: "kyle",
-    read: false,
-};
-
-
-
-function Book(title, author, read) {
+function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
+    this.pages = pages;
     this.read = read;
 }
 
 function addBookToLibrary(){
-    if(myLibrary.length !== 0){
-        myLibrary.forEach(element => {
-            
-        });
-    }
+    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
+    createCard(book);
 }
 
-function hehe(){
-    createCard(kyle);
-}
+
 
 function createCard(obj){
     const card = document.createElement("div");
@@ -74,6 +70,7 @@ function createCard(obj){
     card.appendChild(author);
     card.appendChild(authorObj);
     card.appendChild(toggles);
-    const container = document.getElementById("container");
+
     container.appendChild(card);
+    myLibrary.push(obj);
 }

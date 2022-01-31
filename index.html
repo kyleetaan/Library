@@ -6,18 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
     <title>Library</title>
 </head>
 <body>
     <div id="header">Library</div>
-    <div id="params">
+    <form id="params">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" required>
+
         <label for="author">Author:</label>
         <input type="text" id="author" name="author" required>
-        <button id="submit" onclick="hehe()">Submit</button>
-    </div>
+
+        <label for="pages" name="pages">Pages: </label>
+        <input type="number" id="pages" min="1">
+
+        <label for="read">Read:</label>
+        <input type="checkbox" id="read" name="read">
+
+        <button type="submit">Submit</button>
+    </form>
     <div id="container">
         <div class="card">
             <div class="title">Title:</div>

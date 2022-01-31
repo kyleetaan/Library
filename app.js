@@ -1,7 +1,10 @@
 const container = document.getElementById("container");
 
 const form = document.getElementById("params");
+function handleForm(event) { event.preventDefault(); } 
+form.addEventListener('submit', handleForm);
 form.addEventListener('submit', addBookToLibrary);
+
 
 const titleInput = document.getElementById("title");
 const authorInput = document.getElementById("author");
@@ -9,11 +12,12 @@ const pagesInput = document.getElementById("pages");
 const readInput = document.getElementById("read");
 
 let myLibrary = [
-    {
-        title: "Harry Potter",
-        author: "J.K. Rowling",
-        read: true,
-    }
+    // {
+    //     title: "Harry Potter",
+    //     author: "J.K. Rowling",
+    //     pages: 123,
+    //     read: true,
+    // }
 ];
 
 function Book(title, author, pages, read) {
@@ -25,9 +29,19 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(){ // need to change function, need to display items from array instead of displaying it then pushing to array
     let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
-    createCard(book);
+    myLibrary.push(book);
+    displayLibrary();
 }
 
+function displayLibrary(){
+    container.replaceChildren();
+    if(myLibrary.length === 0){
+        return;
+    }
+    myLibrary.forEach(element => {
+        createCard(element);
+    });
+}
 
 
 function createCard(obj){
@@ -47,6 +61,13 @@ function createCard(obj){
     const authorObj = document.createElement("div");
     authorObj.className = "author";
     authorObj.textContent = obj.author;
+
+    const bookPages = document.createElement("div");
+    bookPages.className = "title";
+    bookPages.textContent = "Pages: "
+    const bookPagesObj = document.createElement("div");
+    bookPagesObj.className = "title";
+    bookPagesObj.textContent = obj.pages;
 
     const toggles = document.createElement("div");
     toggles.className = "toggles";
@@ -69,8 +90,11 @@ function createCard(obj){
     card.appendChild(titleObj);
     card.appendChild(author);
     card.appendChild(authorObj);
+    card.appendChild(bookPages);
+    card.appendChild(bookPagesObj);
     card.appendChild(toggles);
 
     container.appendChild(card);
-    myLibrary.push(obj);
 }
+
+displayLibrary();

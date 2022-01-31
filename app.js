@@ -27,7 +27,7 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary(){ // need to change function, need to display items from array instead of displaying it then pushing to array
+function addBookToLibrary(){ 
     let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
     myLibrary.push(book);
     displayLibrary();

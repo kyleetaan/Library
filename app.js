@@ -23,7 +23,7 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary(){
+function addBookToLibrary(){ // need to change function, need to display items from array instead of displaying it then pushing to array
     let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
     createCard(book);
 }

@@ -11,6 +11,14 @@ const authorInput = document.getElementById("author");
 const pagesInput = document.getElementById("pages");
 const readInput = document.getElementById("read");
 
+//reset every refresh
+titleInput.value = "";
+authorInput.value = "";
+pagesInput.value = "";
+readInput.checked = false;
+let id = 0;
+
+
 let myLibrary = [
     // {
     //     title: "Harry Potter",
@@ -20,15 +28,22 @@ let myLibrary = [
     // }
 ];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, id) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.id = id;
 }
 
 function addBookToLibrary(){ 
-    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
+    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.checked);
+    //reset value for new input
+    titleInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
+    readInput.checked = false;
+
     myLibrary.push(book);
     displayLibrary();
 }
@@ -44,7 +59,7 @@ function displayLibrary(){
 }
 
 
-function createCard(obj){
+function createCard(obj){ 
     const card = document.createElement("div");
     card.className = "card";
 
@@ -75,11 +90,15 @@ function createCard(obj){
     const read = document.createElement("button");
     read.className = "read";
     read.textContent = "READ";
+    if(obj["read"] === true){
+        read.classList.add("button-read");
+    }
+    read.addEventListener('click', ifRead);
 
     const trash = document.createElement("button");
-    
     const trashIcon = document.createElement("i");
     trashIcon.className = "fa fa-trash-o trash";
+    // trash.addEventListener('click', deleteFunc);
 
     trash.appendChild(trashIcon);
 
@@ -98,3 +117,7 @@ function createCard(obj){
 }
 
 displayLibrary();
+
+function ifRead(){
+    this.classList.toggle("button-read");
+}

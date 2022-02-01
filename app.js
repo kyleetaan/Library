@@ -37,13 +37,13 @@ function Book(title, author, pages, read, id) {
 }
 
 function addBookToLibrary(){ 
-    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.checked);
+    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.checked, id);
     //reset value for new input
     titleInput.value = "";
     authorInput.value = "";
     pagesInput.value = "";
     readInput.checked = false;
-
+    id++; // id for dom and array connection. add function for delete
     myLibrary.push(book);
     displayLibrary();
 }
